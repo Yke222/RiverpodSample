@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "807370820127",
+    "project_id": "riverpod-sample-5eb39",
+    "storage_bucket": "riverpod-sample-5eb39.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:807370820127:android:21e0de1bd1e59572c1a32a",
+        "android_client_info": {
+          "package_name": "com.example.riverpodSample"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "807370820127-tv9m0dcbo9hgt5v52e60a4cjevslaa4u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASN_9rUnPLb29bRV9UC-9pAB0oL4af3vg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "807370820127-tv9m0dcbo9hgt5v52e60a4cjevslaa4u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
