@@ -4,6 +4,30 @@ import 'package:riverpod_sample/models/item_model.dart';
 import 'package:riverpod_sample/repositories/custom_exception.dart';
 import 'package:riverpod_sample/repositories/item_repository.dart';
 
+enum ItemListFilter {
+  all,
+  obtained,
+}
+
+final itemListFilterProvider =
+    StateProvider<ItemListFilter>((_) => ItemListFilter.all);
+
+final filteredItemListProvider = Provider<List<Item>>((ref) {
+  final itemListFilterState = ref.watch(itemListFilterProvider).state;
+  final itemListState = ref.watch(itemListControllerProvider.state);
+  return itemListState.maybeWhen(
+    data: (items) {
+      switch (itemListFilterState) {
+        case ItemListFilter.obtained:
+          return items.where((item) => item.obtained).toList();
+        default:
+          return items;
+      }
+    },
+    orElse: () => [],
+  );
+});
+
 final itemListExceptionProvider = StateProvider<CustomException?>((_) => null);
 
 final itemListControllerProvider =
@@ -14,7 +38,11 @@ final itemListControllerProvider =
 
 class ItemListController extends StateNotifier<AsyncValue<List<Item>>> {
   ItemListController(this._reader, this._userId)
-      : super(const AsyncValue.loading());
+      : super(const AsyncValue.loading()) {
+    if (_userId != null) {
+      retrieveItems();
+    }
+  }
 
   final Reader _reader;
   final String? _userId;
